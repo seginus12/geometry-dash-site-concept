@@ -1,0 +1,17 @@
+.rankings, h1{
+    display: flex;
+    justify-content: center;
+}
+
+table, th, td {
+    border: 2px solid white;
+    border-collapse: collapse;
+}
+
+th, td {
+    background-color: #96D4D4;
+  }
+
+h1 {
+    color: green;
+}
