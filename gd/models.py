@@ -4,7 +4,7 @@ class Player(models.Model):
     name = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
     score = models.DecimalField(max_digits=20, decimal_places=2)
-    current_rank = models.IntegerField()
+    current_rank = models.IntegerField() # удалить наверное
     max_rank = models.IntegerField()
     registration_date = models.DateField("Registation date")
 

@@ -8,18 +8,12 @@
     <h1>Best Geometry Dash players</h1>
     <div class="rankings">
         <table>
-            <tr>
-            <th>Player</th>
-            <th>Score</th>
-            </tr>
-            <tr>
-            <td>PLayer 1</td>
-            <td>347577</td>
-            </tr>
-            <tr>
-            <td>Player 2</td>
-            <td>3495347</td>
-            </tr>
+            {% for player in players %}
+                <tr>
+                    <th>{{player.name}}</th>
+                    <th>{{player.score}}</th>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 </body>

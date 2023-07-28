@@ -1,4 +1,10 @@
-.rankings, h1{
+.rankings{
+    display: flex;
+    justify-content: center;
+    table-layout: fixed;
+    width: 100%;
+}
+h1 {
     display: flex;
     justify-content: center;
 }
@@ -9,9 +15,9 @@ table, th, td {
 }
 
 th, td {
-    background-color: #96D4D4;
+    background-color: #96d496;
   }
 
 h1 {
-    color: green;
+    color: red;
 }
