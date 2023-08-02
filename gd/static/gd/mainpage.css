@@ -1,10 +1,23 @@
+body {
+    background: url("/static/gd/images/ground.png");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 header {
-    background-color: blanchedalmond;
+    padding: 10px;
+    background-color:dodgerblue;
     display: flex;
     justify-content: space-between;
 }
 
+h1{
+    color: yellow
+}
+
 a { 
+    color: yellow;
     text-decoration: none;
 }
 
@@ -13,6 +26,22 @@ a {
     height: 50px;
 }
 
-h1{
-    color: brown;
+.site-header{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-buttons .nav-button{
+    height: 100%;
+    text-decoration: none;
+    display: inline;
+    font-size: x-large;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-weight: bold;
+}
+
+.nav-button .nav-button:visited{
+    color: yellow;
 }

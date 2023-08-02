@@ -5,13 +5,23 @@
     <link rel="stylesheet" href="{% static 'gd/mainpage.css' %}"> 
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <div class="logo">
             <a href="#"><img class="logo-img" src="{% static 'gd/images/logo.png' %}" alt="Logo"></a>
         </div>
+        <nav class="nav-buttons">
+            <ul>
+                <li class="nav-button">
+                    <a href="/rankings">Rankings</a>
+                </li>
+                <li class="nav-button">
+                    <a href="#">Levels</a>
+                </li>
+                <li class="nav-button">
+                    <a href="/profile">Profile</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-    <h1>Welcom to official website of the game Geometry Dash!<h1>
-    <a href="/profile">Profile</a>
-    <a href="/top_hardest">Top hardest levels</a>
-    <a href="/rankings">Rankings</a>
+    <h1>Welcome to official website of the game Geometry Dash!<h1>
 </body>
