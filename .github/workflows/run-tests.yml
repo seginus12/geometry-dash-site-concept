@@ -1,13 +1,14 @@
-name: learn-github-actions
-# run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: tests
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 jobs:
-  run-django-tests:
+  integration-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: docker://python:3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run tests
+        run: docker-compose up db tests
