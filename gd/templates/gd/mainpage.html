@@ -2,26 +2,36 @@
 
 <!DOCTYPE html>
 <head>  
-    <link rel="stylesheet" href="{% static 'gd/mainpage.css' %}"> 
+    <link rel="stylesheet" href="{% static 'gd/mainpage.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="site-header">
-        <div class="logo">
-            <a href="#"><img class="logo-img" src="{% static 'gd/images/logo.png' %}" alt="Logo"></a>
+    <header id="header">
+        <div class="container">
+            <div class="header-section">
+                <div class="header__logo">
+                    <a href="#" class="header__logo__link"><img class="header__logo__img" src="{% static 'gd/images/logo.png' %}" alt="Logo"></a>
+                </div>
+                <nav class="nav-section">
+                    <ul class="nav-section__list">
+                        <li class="nav-section__item">
+                            <a href="#">News</a>
+                        </li>
+                        <li class="nav-section__item">
+                            <a href="/rankings">Rankings</a>
+                        </li>
+                        <li class="nav-section__item">
+                            <a href="#">Levels</a>
+                        </li>
+                        <li class="nav-section__item">
+                            <a href="/profile">Profile</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <nav class="nav-buttons">
-            <ul>
-                <li class="nav-button">
-                    <a href="/rankings">Rankings</a>
-                </li>
-                <li class="nav-button">
-                    <a href="#">Levels</a>
-                </li>
-                <li class="nav-button">
-                    <a href="/profile">Profile</a>
-                </li>
-            </ul>
-        </nav>
     </header>
     <h1>Welcome to official website of the game Geometry Dash!<h1>
 </body>

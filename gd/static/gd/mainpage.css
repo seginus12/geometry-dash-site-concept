@@ -5,11 +5,21 @@ body {
     align-items: center;
 }
 
-header {
+#header{
+    width: 70%;
+}
+
+.header-section{
     padding: 10px;
-    background-color:dodgerblue;
+    background-color:rgb(206, 206, 53);
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo__img{
+    width: 50px;
+    height: 50px;
 }
 
 h1{
@@ -17,31 +27,27 @@ h1{
 }
 
 a { 
-    color: yellow;
+    color: white;
+    text-shadow: 1px 1px 2px black;
     text-decoration: none;
 }
 
-.logo-img{
-    width: 50px;
-    height: 50px;
+.nav-section{
+    flex-basis: 70%;
 }
 
-.site-header{
-    width: 70%;
+.nav-section__list{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.nav-buttons .nav-button{
+.nav-section__item{
+    font-family: 'Roboto', sans-serif;
     height: 100%;
     text-decoration: none;
     display: inline;
     font-size: x-large;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
     font-weight: bold;
-}
-
-.nav-button .nav-button:visited{
-    color: yellow;
 }

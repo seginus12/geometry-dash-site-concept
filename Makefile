@@ -7,8 +7,8 @@ creating_superuser:
 # 	$(python manage.py createsuperuser --no-input --username admin --email dmitri.sherbak@gmail.com)
 # endif
 
-tesing:
+test:
 	python manage.py test gd
 
-start: migration creating_superuser tesing
+runserver: migration
 	python manage.py runserver 0.0.0.0:8000

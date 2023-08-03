@@ -4,13 +4,9 @@ services:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
   web:
     build: .
-    command: make start
+    command: make runserver
     ports:
       - "8000:8000"
     environment:
@@ -19,3 +15,11 @@ services:
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
+  tests:
+    build: .
+    command: make test
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    profiles: ["cli-only"]
