@@ -11,4 +11,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Run tests
-        run: docker-compose up tests
+        run: docker-compose up --exit-code-from tests
