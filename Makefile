@@ -8,7 +8,7 @@ creating_superuser:
 # endif
 
 test:
-	python manage.py test gd
+	python manage.py test --settings=gdsite.settings.ci
 
 runserver: migration
 	python manage.py runserver 0.0.0.0:8000

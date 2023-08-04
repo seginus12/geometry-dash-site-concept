@@ -1,9 +1,5 @@
-from django.test import TestCase
-from django.contrib.auth import get_user_model
-from django.contrib import admin
+from django.test import SimpleTestCase
 
-class QuestionModelTests(TestCase):
-
+class UnitTests(SimpleTestCase):
     def test(self):
-        # some tests
         self.assertIs(False, True)
