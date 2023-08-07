@@ -1,0 +1,38 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run tests
+        run: docker-compose up --abort-on-container-exit tests
+        # run: docker-compose up --exit-code-from tests
+
+  deploy:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          bundler-cache: true
+      - name: Deploy
+        uses: D3rHase/ssh-command-action@v0.2.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          user: ${{secrets.SSH_USER}}
+          private_key: ${{secrets.SSH_PRIVATE_KEY}}
+          command: |
+            cd ${{ secrets.WORKDIR }};
+            git checkout main;
+            git pull;
+            docker compose down;
+            docker compose up --build -d;
+            docker system prune --all --force;
