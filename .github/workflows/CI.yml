@@ -28,7 +28,7 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           user: ${{secrets.SSH_USER}}
           host_fingerprint: ${{secrets.SSH_FINGERPRINT}}
-          key: ${{secrets.SSH_PRIVATE_KEY}}
+          private_key: ${{secrets.SSH_PRIVATE_KEY}}
           command: |
             cd ${{ secrets.WORKDIR }};
             git checkout main;
