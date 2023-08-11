@@ -33,7 +33,7 @@ jobs:
           passphrase: ${{secrets.SSH_PASSPHRASE}}
           script: |
             cd ${{ secrets.WORKDIR }};
-            git checkout main;
+            git checkout master;
             git pull;
             docker compose down;
             docker compose up --build -d;
