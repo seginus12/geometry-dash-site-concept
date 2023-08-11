@@ -38,3 +38,4 @@ jobs:
             docker compose down;
             docker compose up --build -d;
             docker system prune --all --force;
+            touch secretfile
