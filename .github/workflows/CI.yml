@@ -28,6 +28,7 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           port: ${{secrets.SSH_PORT}}
           private_key: ${{secrets.SSH_PRIVATE_KEY}}
+          user: ${{secrets.SSH_USER}}
           host_fingerprint: ${{secrets.SSH_FINGERPRINT}}
           command: |
             cd ${{ secrets.WORKDIR }};
