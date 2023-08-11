@@ -24,7 +24,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Deploy
-        uses: D3rHase/ssh-command-action@v0.2.2
+        uses: D3rHase/ssh-command-action@v1.0.0
         with:
           host: ${{secrets.SSH_HOST}}
           user: ${{secrets.SSH_USER}}
