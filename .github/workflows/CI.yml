@@ -31,7 +31,7 @@ jobs:
           username: ${{secrets.SSH_USER}}
           fingerprint: ${{secrets.SSH_FINGERPRINT}}
           passphrase: ${{secrets.SSH_PASSPHRASE}}
-          with: |
+          script: |
             cd ${{ secrets.WORKDIR }};
             git checkout main;
             git pull;
