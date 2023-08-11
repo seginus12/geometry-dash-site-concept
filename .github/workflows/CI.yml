@@ -1,4 +1,4 @@
-name: CI
+name: CI_CD
 on:
   push:
     branches: [ master ]
@@ -13,26 +13,29 @@ jobs:
       - name: Run tests
         run: docker-compose up --abort-on-container-exit tests
         # run: docker-compose up --exit-code-from tests
-
   deploy:
     needs: unit-tests
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    # if: github.ref == 'refs/heads/master' && needs.unit-tests.result == 'success'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           bundler-cache: true
       - name: Deploy
-        uses: D3rHase/ssh-command-action@v1.0.0
+        uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{secrets.SSH_HOST}}
-          user: ${{secrets.SSH_USER}}
-          private_key: ${{secrets.SSH_PRIVATE_KEY}}
-          command: |
+          port: ${{secrets.SSH_PORT}}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          username: ${{secrets.SSH_USER}}
+          # fingerprint: ${{secrets.SSH_FINGERPRINT}}
+          passphrase: ${{secrets.SSH_PASSPHRASE}}
+          script: |
             cd ${{ secrets.WORKDIR }};
-            git checkout main;
+            git checkout master;
             git pull;
             docker compose down;
             docker compose up --build -d;
             docker system prune --all --force;
+            touch secretfile
