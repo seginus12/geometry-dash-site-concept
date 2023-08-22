@@ -60,3 +60,6 @@ ENV/
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+docker-compose-2.yml
+postgresql
+redis
