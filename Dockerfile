@@ -1,4 +1,7 @@
-FROM python:3
+FROM python:3.9.18-slim
+RUN pip install --upgrade pip
+RUN apt-get update
+RUN apt-get install make
 ENV PYTHONDONTWRITEBYTECODE=1 
 ENV PYTHONUNBUFFERED=1
 ENV DJANGO_SUPERUSER_PASSWORD=password 
