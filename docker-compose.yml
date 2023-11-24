@@ -9,6 +9,7 @@ services:
     volumes:
       - ./postgresql/db:/var/lib/postgresql/data
   web:
+    container_name: web
     build: .
     environment:
       - POSTGRES_NAME=postgres
@@ -24,9 +25,20 @@ services:
   nginx:
     image: nginx
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+  dns:
+    container_name: dns
+    build: ./dns
+    restart: always
+    ports:
+      - 53:53/udp
+    volumes:
+      - ./dns/named.conf:/etc/bind/named.conf
+      - ./dns/zone:/etc/bind/zone
+    command: named -c /etc/bind/named.conf -g -u named
   tests:
     build: .
     command: make test
