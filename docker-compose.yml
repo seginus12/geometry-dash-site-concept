@@ -31,14 +31,18 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
   dns:
     container_name: dns
-    build: ./dns
-    restart: always
+    image: ubuntu/bind9
+   #  restart: always
+    environment:
+      - BIND9_USER=root
     ports:
+      - 53:53/tcp
       - 53:53/udp
     volumes:
-      - ./dns/named.conf:/etc/bind/named.conf
-      - ./dns/zone:/etc/bind/zone
-    command: named -c /etc/bind/named.conf -g -u named
+      - ./dns/config:/etc/bind/
+      - ./dns/cache:/var/cache/bind
+      - ./dns/records:/var/lib/bind
+    # command: named -c /etc/bind/named.conf -g -u named
   tests:
     build: .
     command: make test
