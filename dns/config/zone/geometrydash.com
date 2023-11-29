@@ -8,3 +8,5 @@ $TTL	604800
 ;
 @	IN	NS	localhost.
 @	IN	A	127.0.0.1
+www	IN	A	127.0.0.1
+
