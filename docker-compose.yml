@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   db:
     image: postgres
@@ -7,10 +7,11 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - ./postgresql/db:/var/lib/postgresql/data
+      - ./django/postgresql/db:/var/lib/postgresql/data
   web:
     container_name: web
-    build: .
+    build: 
+      context: ./django
     environment:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
@@ -18,7 +19,7 @@ services:
     ports:
       - "8000:8000"
     env_file:
-      - .env
+      - ./.env/dev.env
     depends_on:
       - db
     command: make runserver
