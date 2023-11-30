@@ -2,10 +2,7 @@ version: "3.8"
 services:
   db:
     image: postgres
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    restart: always
     volumes:
       - ./django/postgresql/db:/var/lib/postgresql/data
   redis:
@@ -17,14 +14,10 @@ services:
     container_name: web
     build: 
       context: ./django
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
     expose:
       - "8000"
     env_file:
-      - ./.env/dev.env
+      - ./.env/django.env
     volumes:
       - ./django/static:/usr/src/app/static
     depends_on:
@@ -62,6 +55,3 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     profiles: ["cli-only"]
-
-volumes:
-  static:
