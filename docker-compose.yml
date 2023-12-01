@@ -47,6 +47,7 @@ services:
       - ./dns/cache:/var/cache/bind
       - ./dns/records:/var/lib/bind
     command: named -c /etc/bind/named.conf -g
+    profiles: ["cli-only"]
   tests:
     build: .
     command: make test
