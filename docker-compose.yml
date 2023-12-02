@@ -12,6 +12,7 @@ services:
     command: redis-server --save 60 1 --loglevel warning
   web:
     container_name: web
+    image: dgango-gunicorn
     build: 
       context: ./django
     expose:
@@ -28,11 +29,23 @@ services:
     image: nginx
     ports:
       - 80:80
+      - 443:443
+    restart: always
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./django/static:/usr/src/app/static
+      - letsencrypt:/etc/letsencrypt
+      - certbot:/var/www/certbot
     depends_on:
       - web
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - letsencrypt:/etc/letsencrypt
+      - certbot:/var/www/certbot
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email dmitri.sherbak@gmail.com --agree-tos --no-eff-email -d domen
+    profiles: ["cli-only"]
   dns:
     container_name: dns
     image: ubuntu/bind9
@@ -46,6 +59,8 @@ services:
       - ./dns/config:/etc/bind/
       - ./dns/cache:/var/cache/bind
       - ./dns/records:/var/lib/bind
+    depends_on:
+      - nginx
     command: named -c /etc/bind/named.conf -g
     profiles: ["cli-only"]
   tests:
